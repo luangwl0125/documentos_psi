@@ -585,9 +585,18 @@ if not st.session_state.accepted_terms:
         st.session_state.accepted_terms = True
     else:
         st.stop()
+        
+st.markdown(
+    "<h1 style='text-align: center;'>🧠 Psicólogo Assistente 🧠</h1>",
+    unsafe_allow_html=True
+)
 
-st.header("🧠 Psicólogo Assistente 🧠", divider="gray")
-st.subheader("📝 Elaboração de Documentos", divider="gray")
+# Subtítulo centralizado
+st.markdown(
+    "<h3 style='text-align: center; color: gray;'>📝 Elaboração de Documentos 📝</h3>",
+    unsafe_allow_html=True
+)
+
 nome = st.text_input("SEU NOME COMPLETO")
 numero = st.text_input("CRP")
 data = st.text_input("DATA")
