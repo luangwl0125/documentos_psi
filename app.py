@@ -586,7 +586,8 @@ if not st.session_state.accepted_terms:
     else:
         st.stop()
 
-st.header("🧠 Psicólogo Assistente / Elaboração de Documentos 🧠", divider="gray")
+st.header("🧠 Psicólogo Assistente 🧠", divider="gray")
+st.subheader("📝 Elaboração de Documentos", divider="gray")
 nome = st.text_input("SEU NOME COMPLETO")
 numero = st.text_input("CRP")
 data = st.text_input("DATA")
