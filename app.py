@@ -512,7 +512,7 @@ def gerar_campos_dinamicos(campos, tipo_documento):
 
 def enviar_para_assistente(user_message):
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4-turbo",
             assistant=ASSISTANT_ID,
             messages=[{"role": "user", "content": user_message}],
