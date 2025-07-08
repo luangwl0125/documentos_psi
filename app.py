@@ -514,9 +514,10 @@ def enviar_para_assistente(user_message):
     try:
         response = openai.chat.completions.create(
             model="gpt-4-turbo",
-            assistant=ASSISTANT_ID,
-            messages=[{"role": "user", "content": user_message}],
-            temperature=0.7
+            messages=[
+                {"role": "system", "content": "Você é um assistente útil."},
+                {"role": "user",   "content": user_message}
+            ],
         )
         return response.choices[0].message.content
     except Exception as e:
