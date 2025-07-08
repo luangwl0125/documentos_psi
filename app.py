@@ -512,19 +512,13 @@ def gerar_campos_dinamicos(campos, tipo_documento):
 
 def enviar_para_assistente(user_message):
     try:
-        thread = openai.beta.threads.create()
-        openai.beta.threads.messages.create(thread_id=thread.id, role="user", content=user_message)
-        run = openai.beta.threads.runs.create(thread_id=thread.id, assistant_id=ASSISTANT_ID)
-        while True:
-            run = openai.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-            if run.status == "completed":
-                break
-            time.sleep(1)
-        messages_list = openai.beta.threads.messages.list(thread_id=thread.id)
-        for msg in reversed(messages_list.data):
-            if msg.role == "assistant":
-                return msg.content[0].text.value
-        return "[Resposta não encontrada]"
+        response = openai.ChatCompletion.create(
+            assistant=ASSISTANT_ID = "asst_AM7Evj3dYgIhdzTQX0BOe0E6",
+            model="gpt-4-turbo",
+            messages=[{"role": "user", "content": user_message}],
+            temperature=0.7
+        )
+        return response.choices[0].message.content
     except Exception as e:
         logging.error(f"Erro na API Assistants: {e}")
         return f"[Erro ao interagir com o assistente: {e}]"
