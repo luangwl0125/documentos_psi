@@ -513,16 +513,17 @@ def gerar_campos_dinamicos(campos, tipo_documento):
 def enviar_para_assistente(user_message):
     try:
         response = openai.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-4o",
             messages=[
-                {"role": "system", "content": "Você é um assistente útil."},
+                {"role": "system", "content": "Você é um assistente virtual especializado em documentos psicológicos."},
                 {"role": "user",   "content": user_message}
             ],
+            temperature=0.7
         )
         return response.choices[0].message.content
     except Exception as e:
-        logging.error(f"Erro na API Assistants: {e}")
-        return f"[Erro ao interagir com o assistente: {e}]"
+        logging.error(f"Erro na API OpenAI: {e}")
+        return f"[Erro ao interagir com o modelo: {e}]"
 
 def exportar_para_docx(texto):
     doc = Document()
